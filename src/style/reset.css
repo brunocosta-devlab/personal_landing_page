@@ -1,0 +1,29 @@
+/* Remove margens e paddings padrão */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Melhora renderização de fontes */
+body {
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Remove estilos padrão de listas */
+ul,
+ol {
+  list-style: none;
+}
+
+/* Remove decoração padrão de links */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Imagens responsivas por padrão */
+img {
+  max-width: 100%;
+  display: block;
+}
