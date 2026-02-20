@@ -1,112 +1,164 @@
 <!doctype html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Descrição do projeto aqui" />
 
-    <title>Título do Projeto</title>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Descrição do projeto aqui" />
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="../src/style/reset.css" />
-    <link rel="stylesheet" href="../src/style/style.css" />
+  <title>Título do Projeto</title>
 
-    <!-- JavaScript -->
-    <script src="../src/script/main.js" defer></script>
-  </head>
+  <!-- CSS -->
+  <link rel="stylesheet" href="../src/style/reset.css" />
+  <link rel="stylesheet" href="../src/style/style.css" />
 
-  <body>
-    <!-- ===== HEADER ===== -->
-    <header class="header">
+  <!-- JavaScript -->
+  <script src="../src/script/main.js" defer></script>
+</head>
+
+<body>
+  <!-- ===== HEADER ===== -->
+  <header class="header">
+    <div class="container">
+      <h1 class="logo">Logo</h1>
+
+      <nav class="nav">
+        <ul class="nav-list">
+          <li><a href="#">Início</a></li>
+          <li><a href="#">Sobre</a></li>
+          <li><a href="#">Serviços</a></li>
+          <li><a href="#">Contato</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main">
+    <!-- ===== HERO ===== -->
+    <section class="hero">
       <div class="container">
-        <h1 class="logo">Logo</h1>
-
-        <nav class="nav">
-          <ul class="nav-list">
-            <li><a href="#">Início</a></li>
-            <li><a href="#">Sobre</a></li>
-            <li><a href="#">Serviços</a></li>
-            <li><a href="#">Contato</a></li>
-          </ul>
-        </nav>
+        <h2>Título Principal</h2>
+        <p>Texto de apoio explicando o objetivo da página.</p>
+        <a href="#" class="btn-primary">Call to Action</a>
       </div>
-    </header>
+    </section>
 
-
-    <main class="main">
-      <!-- ===== HERO ===== -->
-      <section class="hero">
-        <div class="container">
-          <h2>Título Principal</h2>
-          <p>Texto de apoio explicando o objetivo da página.</p>
-          <a href="#" class="btn-primary">Call to Action</a>
-        </div>
-      </section>
-  
-      <!-- ===== SOBRE ===== -->
-      <section class="about">
-        <div class="container">
-          <h2>Sobre</h2>
-          <p>Informações sobre o projeto ou profissional.</p>
-        </div>
-      </section>
-  
-      <!-- ===== SERVIÇOS ===== -->
-      <section class="services">
-        <div class="container">
-          <h2>Serviços</h2>
-          <div class="cards">
-            <div class="card">Serviço 1</div>
-            <div class="card">Serviço 2</div>
-            <div class="card">Serviço 3</div>
-          </div>
-        </div>
-      </section>
-  
-      <!-- ===== CONTATO ===== -->
-      <section class="contact">
-        <div class="container">
-          <h2>Contato</h2>
-          <form>
-            <input type="text" placeholder="Seu nome" />
-            <input type="email" placeholder="Seu email" />
-            <button type="submit">Enviar</button>
-          </form>
-        </div>
-      </section>
-    </main>
-
-    <!-- ===== FOOTER ===== -->
-    <footer class="footer">
+    <!-- ===== SOBRE ===== -->
+    <section class="about">
       <div class="container">
-        <div class="footer-info">
-          <h3>Bruno Costa</h3>
-          <p>Desenvolvedor em formação | Ciências da Computação</p>
-        </div>
+        <h2>Sobre</h2>
+        <p>Informações sobre o projeto ou profissional.</p>
+      </div>
+    </section>
 
-        <div class="footer-contact">
-          
-          <a href="mailto:brunocosta0495@gmail.com" target="_blank" class="contact-link">
-            <img src="../src/assets/icons/envelope.svg" alt="E-Mail" class="icon">
-            <p>Email</p>
-          </a>
+    <!-- ===== SERVIÇOS ===== -->
+    <section class="services">
+      <div class="container">
+        <h2>Serviços</h2>
+        <div class="cards">
+          <article class="card">
+            <!-- Imagem do Card -->
+            <img src="imagem.jpg" alt="Descrição da imagem" class="card-image" />
 
-          <a href="https://github.com/brunocosta-devlab" target="_blank" class="contact-link">
-            <img src="../src/assets/icons/github.svg" alt="GitHub" class="icon">
-            GitHub
-          </a>
+            <!-- Conteúdo do Card -->
+            <div class="card-content">
+              <h2 class="card-title">Título do Card</h2>
+              <p class="card-description">
+                Uma breve descrição para complementar o título e compor o
+                conteúdo principal.
+              </p>
+            </div>
 
-          <a href="https://www.linkedin.com/in/bruno-costa-it/" target="_blank" class="contact-link">
-            <img src="../src/assets/icons/linkedin.svg" alt="LinkedIn" class="icon">
-            LinkedIn
-          </a>
-      
-        </div>
+            <!-- Rodapé do Card (Opcional - ex: botões) -->
+            <!-- <div class="card-footer">
+              <button class="card-button">Saiba mais</button>
+            </div> -->
+          </article>
 
-        <div class="footer-copy">
-          <p>&copy; 2026 Bruno Costa. Todos os direitos reservados.</p>
+          <article class="card">
+            <!-- Imagem do Card -->
+            <img src="imagem.jpg" alt="Descrição da imagem" class="card-image" />
+
+            <!-- Conteúdo do Card -->
+            <div class="card-content">
+              <h2 class="card-title">Título do Card</h2>
+              <p class="card-description">
+                Uma breve descrição para complementar o título e compor o
+                conteúdo principal.
+              </p>
+            </div>
+
+            <!-- Rodapé do Card (Opcional - ex: botões) -->
+            <!-- <div class="card-footer">
+              <button class="card-button">Saiba mais</button>
+            </div> -->
+          </article>
+
+          <article class="card">
+            <!-- Imagem do Card -->
+            <img src="imagem.jpg" alt="Descrição da imagem" class="card-image" />
+
+            <!-- Conteúdo do Card -->
+            <div class="card-content">
+              <h2 class="card-title">Título do Card</h2>
+              <p class="card-description">
+                Uma breve descrição para complementar o título e compor o
+                conteúdo principal.
+              </p>
+            </div>
+
+            <!-- Rodapé do Card (Opcional - ex: botões) -->
+            <!-- <div class="card-footer">
+              <button class="card-button">Saiba mais</button>
+            </div> -->
+          </article>
         </div>
       </div>
-    </footer>
-  </body>
+    </section>
+
+    <!-- ===== CONTATO ===== -->
+    <section class="contact">
+      <div class="container">
+        <h2>Contato</h2>
+        <form>
+          <input type="text" placeholder="Seu nome" />
+          <input type="email" placeholder="Seu email" />
+          <button type="submit">Enviar</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-info">
+        <h3>Bruno Costa</h3>
+        <p>Desenvolvedor em formação | Ciências da Computação</p>
+      </div>
+
+      <div class="footer-contact">
+        <a href="mailto:brunocosta0495@gmail.com" target="_blank" class="contact-link">
+          <img src="../src/assets/icons/envelope.svg" alt="E-Mail" class="icon" />
+          <p>Email</p>
+        </a>
+
+        <a href="https://github.com/brunocosta-devlab" target="_blank" class="contact-link">
+          <img src="../src/assets/icons/github.svg" alt="GitHub" class="icon" />
+          GitHub
+        </a>
+
+        <a href="https://www.linkedin.com/in/bruno-costa-it/" target="_blank" class="contact-link">
+          <img src="../src/assets/icons/linkedin.svg" alt="LinkedIn" class="icon" />
+          LinkedIn
+        </a>
+      </div>
+
+      <div class="footer-copy">
+        <p>&copy; 2026 Bruno Costa. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+
 </html>
