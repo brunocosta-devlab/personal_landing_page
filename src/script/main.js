@@ -1,11 +1,11 @@
 // Seleciona os elementos
-const menuToggle = document.querySelector('.menu-toggle');
+const toggleBtn = document.querySelector('.toggle-btn');
 const nav = document.querySelector('.nav');
 const navLinks = document.querySelectorAll('.nav-list a');
 
 // Função para abrir/fechar o menu
-menuToggle.addEventListener('click', () => {
-    menuToggle.classList.toggle('active');
+toggleBtn.addEventListener('click', () => {
+    toggleBtn.classList.toggle('active');
     nav.classList.toggle('active');
     
     // Impede o scroll do corpo quando o menu está aberto
@@ -15,7 +15,7 @@ menuToggle.addEventListener('click', () => {
 // Fecha o menu ao clicar em qualquer link
 navLinks.forEach(link => {
     link.addEventListener('click', () => {
-        menuToggle.classList.remove('active');
+        toggleBtn.classList.remove('active');
         nav.classList.remove('active');
         document.body.style.overflow = 'auto';
     });

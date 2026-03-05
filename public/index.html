@@ -4,9 +4,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Descrição do projeto aqui" />
+  <meta name="description"
+    content="Personal Trainer especializado em treinos personalizados, emagrecimento, hipertrofia e melhoria de performance. Transforme seu corpo com acompanhamento profissional." />
 
-  <title>Título do Projeto</title>
+  <title>Personal Trainer</title>
 
   <!-- CSS -->
   <link rel="stylesheet" href="../src/style/reset.css" />
@@ -20,11 +21,11 @@
   <!-- ===== HEADER ===== -->
   <header class="header">
     <div class="container">
-      <h1 class="logo">Logo</h1>
+      <img src="../src/assets/images/peronal_logo.png" alt="logo" class="logo-img">
 
-      <button class="menu-toggle" aria-label="Abrir menu">
-      <span class="hamburger"></span>
-    </button>
+      <button class="toggle-btn" aria-label="Abrir menu">
+        <span class="toggle-icon"></span>
+      </button>
 
       <nav class="nav">
         <ul class="nav-list">
@@ -41,23 +42,30 @@
     <!-- ===== HERO ===== -->
     <section class="hero">
       <div class="container">
-        <h2>Título Principal</h2>
-        <p>Texto de apoio explicando o objetivo da página.</p>
-        <a href="#" class="btn-primary">Call to Action</a>
+        <h2>Transforme-se</h2>
+        <p>
+          Treinos estratégicos, acompanhamento individual e foco em resultados reais.
+          <br>
+          Comece hoje a evoluir sua saúde, força e desempenho.
+        </p>
+        <a href="#" class="cta-btn">Saiba Mais</a>
       </div>
     </section>
 
     <!-- ===== SOBRE ===== -->
     <section class="about">
+      <div class="img">
+        <img src="../src/assets/images/personal_profile.png" alt="personal_profile" class="about-img">
+      </div>
       <div class="container">
-        <div class="about-img">
-          <img src="../src/assets/images/personal_profile.png" alt="personal_profile">
-        </div>
-
-        <div class="about-content">
-          <h2>Sobre</h2>
-          <p>Informações sobre o projeto ou profissional.</p>
-        </div>
+        <h2>Sobre Mim</h2>
+        <p>
+          Sou Personal Trainer com foco em resultados consistentes e treinamento baseado em ciência.
+          Desenvolvo programas personalizados de acordo com o objetivo, nível e rotina de cada aluno.
+          <br>
+          Atuo com emagrecimento, hipertrofia, condicionamento físico e melhora de performance, sempre priorizando
+          técnica, segurança e evolução progressiva.
+        </p>
       </div>
     </section>
 
@@ -67,13 +75,13 @@
         <h2>Serviços</h2>
         <div class="cards">
           <article class="card">
-            <img src="../src/assets/images/consultoria.jpeg" alt="consultoria" class="card-image" />
+            <img src="../src/assets/images/consultoria.jpeg" alt="consultoria" class="card-img" />
 
             <div class="card-content">
-              <h2 class="card-title">Título do Card</h2>
+              <h2 class="card-title">Consultoria Online</h2>
               <p class="card-description">
-                Uma breve descrição para complementar o título e compor o
-                conteúdo principal.
+                Treino personalizado, acompanhamento semanal e ajustes estratégicos para você evoluir mesmo treinando
+                sozinho.
               </p>
             </div>
             <!-- Rodapé do Card (Opcional - ex: botões) -->
@@ -83,13 +91,13 @@
           </article>
 
           <article class="card">
-            <img src="../src/assets/images/personal.jpeg" alt="Descrição da imagem" class="card-image" />
+            <img src="../src/assets/images/personal.jpeg" alt="Descrição da imagem" class="card-img" />
 
             <div class="card-content">
-              <h2 class="card-title">Título do Card</h2>
+              <h2 class="card-title">Treino Presencial</h2>
               <p class="card-description">
-                Uma breve descrição para complementar o título e compor o
-                conteúdo principal.
+                Acompanhamento individual durante os treinos, correção técnica, motivação e foco total na sua
+                performance.
               </p>
             </div>
             <!-- Rodapé do Card (Opcional - ex: botões) -->
@@ -99,13 +107,13 @@
           </article>
 
           <article class="card">
-            <img src="../src/assets/images/crossfit.jpeg" alt="Descrição da imagem" class="card-image" />
+            <img src="../src/assets/images/crossfit.jpeg" alt="Descrição da imagem" class="card-img" />
 
             <div class="card-content">
-              <h2 class="card-title">Título do Card</h2>
+              <h2 class="card-title">Performance e Condicionamento</h2>
               <p class="card-description">
-                Uma breve descrição para complementar o título e compor o
-                conteúdo principal.
+                Treinos voltados para melhora de força, resistência, explosão e preparo físico geral, adaptados ao seu
+                objetivo.
               </p>
             </div>
             <!-- Rodapé do Card (Opcional - ex: botões) -->
@@ -120,11 +128,15 @@
     <!-- ===== CONTATO ===== -->
     <section class="contact">
       <div class="container">
-        <h2>Contato</h2>
-        <form>
-          <input type="text" placeholder="Seu nome" />
-          <input type="email" placeholder="Seu email"/>
-          <a class="btn-send" type="submit">Enviar</a>
+        <h2>Fale comigo</h2>
+        <form id="whatsapp-form" class="whatsapp-form">
+          <input type="text" id="name" class="form-item" placeholder="Seu nome" required />
+          <input type="email" id="email" class="form-item" placeholder="Seu email" required />
+          <textarea id="message" class="form-item" placeholder="Como posso te ajudar?"></textarea>
+          <button class="form-btn" type="submit">
+            ENVIAR
+            <img src="../src/assets/icons/whatsapp.svg" alt="WhatsApp" class="icon" />
+          </button>
         </form>
       </div>
     </section>
@@ -133,30 +145,20 @@
   <!-- ===== FOOTER ===== -->
   <footer class="footer">
     <div class="container">
-      <div class="footer-info">
-        <h3>Bruno Costa</h3>
-        <p>Desenvolvedor Fullstack</p>
+      <div class="dev-info">
+        <p>
+          Desenvolvido por <a href="https://www.linkedin.com/in/bruno-costa-it/" target="_blank">Bruno Costa</a>
+        </p>
       </div>
 
-      <div class="footer-contact">
-        <a href="mailto:brunocosta0495@gmail.com" target="_blank" class="contact-link">
-          <img src="../src/assets/icons/envelope.svg" alt="E-Mail" class="icon" />
-          <p>Email</p>
-        </a>
-
-        <a href="https://github.com/brunocosta-devlab" target="_blank" class="contact-link">
-          <img src="../src/assets/icons/github.svg" alt="GitHub" class="icon" />
-          GitHub
-        </a>
-
-        <a href="https://www.linkedin.com/in/bruno-costa-it/" target="_blank" class="contact-link">
-          <img src="../src/assets/icons/linkedin.svg" alt="LinkedIn" class="icon" />
-          LinkedIn
-        </a>
+      <div class="legal-info">
+        <a href="/privacidade.html">Política de Privacidade</a>
+        <a href="/termos.html">Termos de Uso</a>
       </div>
 
-      <div class="footer-copy">
-        <p>&copy; 2026 Bruno Costa. Todos os direitos reservados.</p>
+      <div class="cnpj-info">
+        <p>CONSULTORIA ESPORTIVA LTDA</p>
+        <p>CNPJ: 00.000.000/0001-00</p>
       </div>
     </div>
   </footer>

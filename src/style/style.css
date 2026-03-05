@@ -1,40 +1,42 @@
 /*==========================================================================
-  VARIÁVEIS E CONFIGURAÇÕES (ROOT)
+  ROOT CONFIG
   ========================================================================== */
 :root {
-  /* Cores */
   --bg-color: #f4f4f4;
-  --surface-color: #f8f9fa;
+  --surface-color: #dae0e5;
   --text-color: #121212;
-  --primary-color: #48b9c7;
-  --secondary-color: #f5793a;
+  --primary-color: hsl(187, 53%, 30%);
+  --secondary-color: #b8440a;
 
-  /* Espaçamentos */
   --spacing-p: 0.5rem;
   --spacing-m: 1.5rem;
   --spacing-g: 4rem;
 
-  /* Layout */
   --container-width: 1200px;
 
-  /* Tipografia */
-  --font-title: Georgia, 'Times New Roman', Times, serif;
-  --font-main: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  --font-title: Georgia, "Times New Roman", Times, serif;
+  --font-main:
+    system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
-/* Tema de acordo com a Preferência do Usuário */
+/* USER PREFERENCES */
 @media (prefers-color-scheme: dark) {
   :root {
     --bg-color: #121212;
     --surface-color: #1e1e1e;
     --text-color: #f4f4f4;
+    --primary-color: #48b9c7;
+    --secondary-color: #f5793a;
   }
 }
 
 /*==========================================================================
-  RESET E ESTILOS GLOBAIS
+  RESETS
   ========================================================================== */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -54,7 +56,8 @@ body {
   line-height: 1.5;
 }
 
-ul, ol {
+ul,
+ol {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -72,23 +75,27 @@ img {
 }
 
 /* ==========================================================================
-   3. LAYOUT BASE (MOBILE FIRST)
+   LAYOUT BASE (MOBILE FIRST)
    ========================================================================== */
 
 /* Containers */
-.main { flex: 1; display: flex; flex-direction: column; }
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
 .container {
   max-width: var(--container-width);
   margin: 0 auto;
   padding: 0 var(--spacing-m);
 }
 
-/* Header & Menu Hamburguer */
+/* Header e Hamburguer Menu */
 .header {
   background-color: var(--surface-color);
-  padding: var(--spacing-m) 0;
   margin-top: var(--spacing-m);
-  border-bottom: 1px solid #0000001a;
+  padding: var(--spacing-m) 0;
 }
 
 .header .container {
@@ -97,117 +104,304 @@ img {
   align-items: center;
 }
 
-/* Navegação Mobile (Escondida por padrão à direita) */
-.menu-toggle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: none;
-  border: none;
-  cursor: pointer;
-  width: 40px;
-  height: 40px;
-  z-index: 1001;
+.logo-img {
+  height: 100px;
+  border-radius: 50rem;
+  box-shadow: 0px 0px 20px var(--primary-color);
+}
+
+/* Container do botão: define a área de clique e posicionamento */
+.toggle-btn {
+  display: flex; /* Usa flex para centralizar o span interno */
+  align-items: center; /* Centraliza verticalmente */
+  justify-content: center; /* Centraliza horizontalmente */
+  background: none; /* Remove fundo padrão de botão */
+  border: none; /* Remove borda padrão */
+  cursor: pointer; /* Mostra a 'mãozinha' ao passar o mouse */
+  width: 48px; /* Largura da área de toque */
+  height: 48px; /* Altura da área de toque (bom para mobile) */
+  z-index: 1001; /* Garante que fique acima do menu lateral */
+  padding: 0; /* Remove preenchimentos internos */
+}
+
+/* A linha central do hambúrguer */
+.toggle-icon {
+  display: block; /* Garante que o span se comporte como bloco */
+  width: 30px; /* Largura da linha */
+  height: 3px; /* Espessura da linha */
+  background: var(--text-color); /* Cor base da linha */
+  position: relative; /* Base para posicionar as outras duas linhas */
+  transition: 0.3s; /* Suaviza a transição para o 'X' */
+}
+
+/* Cria as linhas superior e inferior usando pseudoelementos */
+.toggle-icon::before,
+.toggle-icon::after {
+  content: ""; /* Necessário para o elemento aparecer */
+  position: absolute; /* Posiciona em relação ao toggle-icon */
+  left: 0; /* Alinha à esquerda */
+  width: 30px; /* Mesma largura da linha central */
+  height: 3px; /* Mesma espessura */
+  background: var(--text-color); /* Mesma cor */
+  transition: 0.3s; /* Suaviza o movimento */
+}
+
+/* Posiciona as linhas superior 10px abixo e 10px acima */
+.toggle-icon::before {
+  top: -10px;
+}
+.toggle-icon::after {
+  bottom: -10px;
+}
+
+/* --- Animação quando o botão recebe a classe .active via JS --- */
+/* Esconde a linha central */
+.toggle-btn.active .toggle-icon {
+  background: transparent;
+}
+
+/* Gira a linha superior em 45 graus para formar metade do 'X' */
+.toggle-btn.active .toggle-icon::before {
+  transform: rotate(45deg);
+  top: 0; /* Move para o centro antes de girar */
+}
+
+/* Gira a linha inferior em -45 graus para formar a outra metade do 'X' */
+.toggle-btn.active .toggle-icon::after {
+  transform: rotate(-45deg);
+  bottom: 0; /* Move para o centro antes de girar */
 }
 
 .nav {
-  position: fixed;
-  top: 0;
-  right: -100%; 
-  width: 280px;
+  position: fixed; /* Prende o menu na posição */
+  top: 0; /* Posiciona colado ao topo */
+  right: -100%; /* Esconde à direita */
+  width: 80%;
   height: 100vh;
   background-color: var(--surface-color);
   transition: 0.4s ease-in-out;
   z-index: 1000;
-  box-shadow: -10px 0 20px rgba(0,0,0,0.1);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.nav.active { right: 0; }
+.nav.active {
+  right: 0;
+}
 
 .nav-list {
   display: flex;
   flex-direction: column;
   text-align: center;
-  gap: 3rem;
+  gap: var(--spacing-g);
+  font-size: x-large;
 }
 
-/* Ícone Hamburguer */
-.hamburger {
-  display: block;
-  width: 25px;
-  height: 3px;
-  background: var(--text-color);
-  position: relative;
-  transition: 0.3s;
+.nav-list li {
+  transition: transform ease;
 }
-.hamburger::before, .hamburger::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  width: 25px;
-  height: 3px;
-  background: var(--text-color);
-  transition: 0.3s;
+
+.nav-list li:active {
+  color: var(--primary-color);
 }
-.hamburger::before { top: -8px; }
-.hamburger::after { bottom: -8px; }
 
-/* Animação do Menu Ativo */
-.menu-toggle.active .hamburger { background: transparent; }
-.menu-toggle.active .hamburger::before { transform: rotate(45deg); top: 0; }
-.menu-toggle.active .hamburger::after { transform: rotate(-45deg); bottom: 0; }
+/* SECTIONS */
+section {
+  padding: var(--spacing-g) 0;
+  min-height: 60vh;
+}
 
-/* Seções Gerais */
-section { padding: var(--spacing-g) 0; min-height: 60vh; }
-
-/* Hero */
-.hero { text-align: center; justify-content: center; display: flex; flex-direction: column; }
-.hero h2 { font-size: 2rem; color: var(--primary-color); margin-bottom: var(--spacing-p); }
-
-/* Botões */
-.btn-primary, .btn-send {
-  color: var(--text-color);
-  border: 1px solid var(--primary-color);
-  transition: all 0.5s;
-  padding: var(--spacing-p);
-  border-radius: 0.5rem;
-  cursor: pointer;
+/* HERO */
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   text-align: center;
 }
 
-/* Sobre */
-.about > .container { display: flex; flex-direction: column; align-items: center; gap: var(--spacing-m); text-align: center; }
-.about-img img { border-radius: 2rem; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2); max-width: 250px; }
-
-/* Serviços (Cards) */
-.services { background-color: var(--surface-color); text-align: center; }
-.cards { display: grid; grid-template-columns: 1fr; gap: var(--spacing-m); }
-.card { 
-  background-color: var(--bg-color); 
-  border: 1px solid var(--primary-color); 
-  border-radius: 2rem 2rem 0 0; 
-  overflow: hidden; 
+.hero h2 {
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin-bottom: var(--spacing-p);
 }
 
-/* Contato */
-.contact form { display: flex; flex-direction: column; gap: var(--spacing-m); width: 100%; }
-.contact form input { width: 100%; padding: var(--spacing-p); font-size: 1rem; }
+.hero p {
+  font-size: 1.5rem;
+  color: var(--text-color);
+  margin-bottom: var(--spacing-m);
+  letter-spacing: 0.05rem;
+}
 
-/* Rodapé Mobile */
-.footer { border-top: 1px solid #0000001a; padding: var(--spacing-m) 0; text-align: center; }
-.footer > .container { display: flex; flex-direction: column; gap: var(--spacing-m); }
-.footer-contact { display: flex; justify-content: center; gap: var(--spacing-m); }
+.cta-btn {
+  display: inline-block;
+  border: 1px solid var(--primary-color);
+  border-radius: var(--spacing-p);
+  padding: var(--spacing-p);
+  font-size: 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: transform ease 0.2s;
+}
+
+.cta-btn:active {
+  transform: scale(0.95);
+  background-color: var(--primary-color);
+  cursor: wait;
+}
+
+/* ABOUT */
+.about {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-img {
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  object-position: 0 40%;
+  border-radius: 20px;
+  margin: var(--spacing-p) var(--spacing-g);
+  max-width: 320px;
+  box-shadow: 0px 0px 40px var(--primary-color);
+}
+
+.about .container {
+  margin: var(--spacing-p) var(--spacing-m);
+}
+
+.about h2 {
+  color: var(--primary-color);
+  margin-bottom: var(--spacing-p);
+  font-size: 1.5rem;
+}
+
+.about p {
+  font-size: 1.2;
+  letter-spacing: 0.05rem;
+}
+
+/* SERVICES */
+.services {
+  background-color: var(--surface-color);
+  text-align: center;
+}
+
+.services h2 {
+  color: var(--primary-color);
+  margin-bottom: var(--spacing-m);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-m);
+}
+
+.card {
+  background-color: var(--bg-color);
+  border: 1px solid var(--primary-color);
+  border-radius: 2rem;
+  overflow: hidden;
+}
+
+.card-img {
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  object-position: center;
+}
+
+.card-content {
+  padding: var(--spacing-m);
+}
+
+/* CONTACT */
+.contact h2 {
+  justify-self: center;
+  color: var(--primary-color);
+  margin-bottom: var(--spacing-p);
+}
+
+.whatsapp-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--spacing-p);
+}
+
+.form-item {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+.form-btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--spacing-p);
+  width: fit-content;
+  padding: var(--spacing-p);
+  align-self: end;
+  border-radius: 0.5rem;
+  background-color: green;
+  border: none;
+  cursor: pointer;
+  transition: transform ease 0.2s;
+  font-weight: bold;
+}
+
+.form-btn:active {
+  transform: scale(0.95);
+  background-color: var(--surface-color);
+  cursor: wait;
+}
+
+.icon {
+  width: 40px;
+  justify-self: center;
+  align-self: center;
+}
+
+/* FOOTER */
+.footer {
+  padding: var(--spacing-m) 0;
+  text-align: center;
+  background-color: var(--surface-color);
+}
+
+.footer a {
+  text-decoration: underline;
+  font-weight: bolder;
+}
+
+.dev-info {
+  padding: var(--spacing-p) 0;
+}
+
+.legal-info {
+  display: flex;
+  flex-direction: column;
+  padding: var(--spacing-p) 0;
+}
+
+.cnpj-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--spacing-m) 0;
+}
 
 /* ==========================================================================
    4. MEDIA QUERIES (DESKTOP - A partir de 769px)
    ========================================================================== */
 @media (min-width: 769px) {
-  
   /* Esconder Menu Hamburguer */
-  .menu-toggle { display: none; }
+  .menu-toggle {
+    display: none;
+  }
 
   /* Reset Navegação para Horizontal */
   .nav {
@@ -225,36 +419,67 @@ section { padding: var(--spacing-g) 0; min-height: 60vh; }
   }
 
   /* Hover Effects (Animados apenas no Desktop) */
-  .nav-list>li>a { position: relative; }
-  .nav-list>li>a::after, .nav-list>li>a::before {
-    content: ''; position: absolute; width: 100%; height: 2px;
-    background: var(--primary-color); bottom: -5px; left: 0;
-    transform: scaleX(0); transition: transform 0.4s ease-out;
+  .nav-list > li > a {
+    position: relative;
   }
-  .nav-list>li>a:hover::after { transform: scaleX(1); }
+  .nav-list > li > a::after,
+  .nav-list > li > a::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: var(--primary-color);
+    bottom: -5px;
+    left: 0;
+    transform: scaleX(0);
+    transition: transform 0.4s ease-out;
+  }
+  .nav-list > li > a:hover::after {
+    transform: scaleX(1);
+  }
 
-  .btn-primary:hover, .btn-send:hover {
+  .cta-btn:hover {
     box-shadow: inset 15em 0 0 0 var(--primary-color);
     color: white;
   }
 
   /* Ajustes de Seção Desktop */
-  .hero h2 { font-size: 3.5rem; }
+  .hero h2 {
+    font-size: 3.5rem;
+  }
 
-  .about > .container { flex-direction: row; text-align: left; }
-  .about-img img { max-width: 350px; }
+  .about > .container {
+    flex-direction: row;
+    text-align: left;
+  }
+  .about-img img {
+    max-width: 350px;
+  }
 
-  .cards { grid-template-columns: repeat(3, 1fr); }
+  .cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
 
-  .contact form { width: 400px; margin: 0 auto; }
+  .contact form {
+    width: 400px;
+    margin: 0 auto;
+  }
 
   /* Rodapé Desktop Layout */
   .footer > .container {
     display: grid;
-    grid-template-areas: 'info contact' 'copy contact';
+    grid-template-areas: "info contact" "copy contact";
     flex-direction: row;
     justify-content: space-between;
     text-align: left;
   }
-  .footer-contact { grid-area: contact; }
+  .footer-contact {
+    grid-area: contact;
+  }
+}
+
+@media (min-width: 769px) {
+  .toggle-btn {
+    display: none;
+  }
 }
