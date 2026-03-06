@@ -244,7 +244,7 @@ section {
 }
 
 /* ABOUT */
-.about {
+.about .container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -257,12 +257,13 @@ section {
   object-position: 0 40%;
   border-radius: 20px;
   margin: var(--spacing-p) var(--spacing-g);
-  max-width: 320px;
+  width: 320px;
   box-shadow: 0px 0px 40px var(--primary-color);
+  margin-bottom: var(--spacing-m);
 }
 
 .about .container {
-  margin: var(--spacing-p) var(--spacing-m);
+  padding: g;
 }
 
 .about h2 {
@@ -302,6 +303,7 @@ section {
 
 .card-img {
   width: 100%;
+  height: 200px;
   aspect-ratio: 16/9;
   object-fit: cover;
   object-position: center;
@@ -394,9 +396,14 @@ section {
   body {
     padding-top: 100px;
   }
-  
-    /* HIDE TOGGLE MENU */
-  .toggle-btn, .toggle-icon {
+
+  .main .container {
+    margin-top: 100px;
+  }
+
+  /* HIDE TOGGLE MENU */
+  .toggle-btn,
+  .toggle-icon {
     display: none;
   }
 
@@ -409,26 +416,36 @@ section {
     background-color: var(--surface-color);
     margin-top: 0;
   }
+  .logo-img {
+    transition: transform 0.3s ease-in-out;
+  }
+  .logo-img:hover {
+    transform: scale(1.35);
+  }
 
-  .nav{
+  .nav {
     position: static;
     height: auto;
     background: none;
   }
- 
+
   .nav-list {
     flex-direction: row;
   }
 
-  .nav-list a{
+  .nav-list a {
     position: relative;
     display: inline-block;
     padding-bottom: 5px;
     transition: transform 0.2s ease;
   }
 
+  .nav-list a:hover {
+    transform: scale(1.1);
+  }
+
   .nav-list a::after {
-    content: '';
+    content: "";
     position: absolute;
     left: 0;
     bottom: 0;
@@ -442,5 +459,62 @@ section {
 
   .nav-list a:hover::after {
     transform: scaleX(1);
+  }
+
+  .about .container {
+    display: grid;
+    grid-template-areas:
+      "img    h2"
+      "img    p ";
+  }
+
+  .about-img {
+    grid-area: img;
+  }
+
+  .about h2 {
+    grid-area: h2;
+  }
+
+  .about p {
+    grid-area: p;
+  }
+
+  .cards {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .contact {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .form-item {
+    width: 400px;
+  }
+
+  .whatsapp-form textarea {
+    height: 200px;
+    resize: none;
+  }
+
+  .footer .container {
+    display: grid;
+    grid-template-areas:
+      "cnpj   .   dev"
+      "cnpj   .   legal";
+  }
+
+  .dev-info {
+    grid-area: dev;
+  }
+
+  .legal-info {
+    grid-area: legal;
+  }
+
+  .cnpj-info {
+    grid-area: cnpj;
   }
 }
