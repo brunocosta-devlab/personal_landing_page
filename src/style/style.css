@@ -78,7 +78,7 @@ img {
    LAYOUT BASE (MOBILE FIRST)
    ========================================================================== */
 
-/* Containers */
+/* CONTAINERS */
 .main {
   flex: 1;
   display: flex;
@@ -91,7 +91,7 @@ img {
   padding: 0 var(--spacing-m);
 }
 
-/* Header e Hamburguer Menu */
+/* HEADER */
 .header {
   background-color: var(--surface-color);
   margin-top: var(--spacing-m);
@@ -110,7 +110,7 @@ img {
   box-shadow: 0px 0px 20px var(--primary-color);
 }
 
-/* Container do botão: define a área de clique e posicionamento */
+/* TOGGLE MENU */
 .toggle-btn {
   display: flex; /* Usa flex para centralizar o span interno */
   align-items: center; /* Centraliza verticalmente */
@@ -124,7 +124,6 @@ img {
   padding: 0; /* Remove preenchimentos internos */
 }
 
-/* A linha central do hambúrguer */
 .toggle-icon {
   display: block; /* Garante que o span se comporte como bloco */
   width: 30px; /* Largura da linha */
@@ -134,7 +133,6 @@ img {
   transition: 0.3s; /* Suaviza a transição para o 'X' */
 }
 
-/* Cria as linhas superior e inferior usando pseudoelementos */
 .toggle-icon::before,
 .toggle-icon::after {
   content: ""; /* Necessário para o elemento aparecer */
@@ -146,7 +144,6 @@ img {
   transition: 0.3s; /* Suaviza o movimento */
 }
 
-/* Posiciona as linhas superior 10px abixo e 10px acima */
 .toggle-icon::before {
   top: -10px;
 }
@@ -154,19 +151,15 @@ img {
   bottom: -10px;
 }
 
-/* --- Animação quando o botão recebe a classe .active via JS --- */
-/* Esconde a linha central */
 .toggle-btn.active .toggle-icon {
   background: transparent;
 }
 
-/* Gira a linha superior em 45 graus para formar metade do 'X' */
 .toggle-btn.active .toggle-icon::before {
   transform: rotate(45deg);
   top: 0; /* Move para o centro antes de girar */
 }
 
-/* Gira a linha inferior em -45 graus para formar a outra metade do 'X' */
 .toggle-btn.active .toggle-icon::after {
   transform: rotate(-45deg);
   bottom: 0; /* Move para o centro antes de girar */
@@ -398,88 +391,56 @@ section {
    4. MEDIA QUERIES (DESKTOP - A partir de 769px)
    ========================================================================== */
 @media (min-width: 769px) {
-  /* Esconder Menu Hamburguer */
-  .menu-toggle {
+  body {
+    padding-top: 100px;
+  }
+  
+    /* HIDE TOGGLE MENU */
+  .toggle-btn, .toggle-icon {
     display: none;
   }
 
-  /* Reset Navegação para Horizontal */
-  .nav {
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1001;
+    background-color: var(--surface-color);
+    margin-top: 0;
+  }
+
+  .nav{
     position: static;
-    width: auto;
     height: auto;
     background: none;
-    box-shadow: none;
-    display: block;
   }
-
+ 
   .nav-list {
     flex-direction: row;
-    gap: var(--spacing-m);
   }
 
-  /* Hover Effects (Animados apenas no Desktop) */
-  .nav-list > li > a {
+  .nav-list a{
     position: relative;
+    display: inline-block;
+    padding-bottom: 5px;
+    transition: transform 0.2s ease;
   }
-  .nav-list > li > a::after,
-  .nav-list > li > a::before {
-    content: "";
+
+  .nav-list a::after {
+    content: '';
     position: absolute;
+    left: 0;
+    bottom: 0;
     width: 100%;
     height: 2px;
-    background: var(--primary-color);
-    bottom: -5px;
-    left: 0;
+    background-color: var(--primary-color);
     transform: scaleX(0);
-    transition: transform 0.4s ease-out;
+    transform-origin: left;
+    transition: transform 0.2s ease-out;
   }
-  .nav-list > li > a:hover::after {
+
+  .nav-list a:hover::after {
     transform: scaleX(1);
-  }
-
-  .cta-btn:hover {
-    box-shadow: inset 15em 0 0 0 var(--primary-color);
-    color: white;
-  }
-
-  /* Ajustes de Seção Desktop */
-  .hero h2 {
-    font-size: 3.5rem;
-  }
-
-  .about > .container {
-    flex-direction: row;
-    text-align: left;
-  }
-  .about-img img {
-    max-width: 350px;
-  }
-
-  .cards {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .contact form {
-    width: 400px;
-    margin: 0 auto;
-  }
-
-  /* Rodapé Desktop Layout */
-  .footer > .container {
-    display: grid;
-    grid-template-areas: "info contact" "copy contact";
-    flex-direction: row;
-    justify-content: space-between;
-    text-align: left;
-  }
-  .footer-contact {
-    grid-area: contact;
-  }
-}
-
-@media (min-width: 769px) {
-  .toggle-btn {
-    display: none;
   }
 }
